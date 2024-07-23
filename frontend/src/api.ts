@@ -1,6 +1,6 @@
 import { ComboboxData } from '@mantine/core';
 import axios from 'axios';
-import { Currency } from 'types';
+import { Currency, CurrencyConversion, CurrencyConversionDto } from 'types';
 
 const api = axios.create({
   baseURL: 'http://localhost:3333/api',
@@ -14,5 +14,13 @@ export const apiService = {
       label: [currency.currency_name, currency.iso].join(' - '),
     }));
     return formattedData;
+  },
+
+  getCurrencyConversion: async (conversionData: CurrencyConversionDto) => {
+    const { data } = await api.post<CurrencyConversion>(
+      '/convert',
+      conversionData,
+    );
+    return data;
   },
 };
