@@ -13,7 +13,10 @@
 .pnp.*
 
 node_modules
+dist
+.env
 
 
 .nx/cache
 .nx/workspace-data
+.vscode
